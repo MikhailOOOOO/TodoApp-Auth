@@ -14,10 +14,9 @@ Route::get('/login', function () {
     return view('auth.login'); 
 })->name('login');
 
-Route::post('/register', [AuthController::class, 'register']); // Обработка регистрации
-Route::post('/login', [AuthController::class, 'login'])->name('login'); // Обработка входа
+Route::post('/register', [AuthController::class, 'register']); 
+Route::post('/login', [AuthController::class, 'login'])->name('login'); 
 
-// Маршруты для аутентифицированных пользователей (например, работа с задачами)
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tasks', [TasksController::class, 'index'])->name('tasks');
     Route::get('/tasks/create', [TasksController::class, 'create']);
